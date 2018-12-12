@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchUsers } from "../actions";
-// import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 
 class UsersList extends Component {
 
@@ -11,7 +10,7 @@ class UsersList extends Component {
 
   renderUsers() {
     return this.props.users.map(user => {
-      return <li key={user.id}>user.name</li>;
+      return <li key={user.id}>{user.name}</li>;
     });
   }
 
@@ -24,7 +23,6 @@ class UsersList extends Component {
     );
   }
 }
-function mapStateToProps(state){
-  return { users: state.users };
-}
-export default connect (mapStateToProps, { fetchUsers })(UsersList);
+const mapStateToProps = state => ({ users: state.users });
+
+export default connect (mapStateToProps, { fetchUsers })(UsersList)
